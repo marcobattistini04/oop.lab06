@@ -1,7 +1,9 @@
 package it.unibo.collections;
 
 import java.util.List;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.ArrayList;
 
 /**
  * Example class using {@link List} and {@link Map}.
@@ -66,5 +68,26 @@ public final class UseListsAndMaps {
         /*
          * 8) Compute the population of the world
          */
+
+         List<Integer> list = new ArrayList<>();
+         for (int i = 1000; i < 2000; i++) {
+            list.add(i);
+         }
+
+
+         List<Integer> list2 = new LinkedList<>();
+         list2.addAll(list);
+
+         int listSize = list.size();
+         int temp = list.get(0);
+         list.set(0, list.get(listSize - 1));
+         list.set(listSize - 1, temp);
+
+         for(int elem : list) {
+            System.out.println(elem);
+         }
+
+
+
     }
 }
