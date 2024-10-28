@@ -4,12 +4,12 @@ import java.io.IOException;
 
 public class NetworkException extends IOException{
 
-    NetworkException() throws Exception {
-        throw new Exception("Network error: no response");
+    NetworkException() {
+        super("Network error: no response");
     }
 
     NetworkException( String message) {
-        System.out.println("Network error while sending message: " + message);
+        super("Network error while sending message: " + message);
     }
     
 }
