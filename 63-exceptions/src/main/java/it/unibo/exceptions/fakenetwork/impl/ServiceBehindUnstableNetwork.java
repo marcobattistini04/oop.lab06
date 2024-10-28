@@ -2,6 +2,7 @@ package it.unibo.exceptions.fakenetwork.impl;
 
 import it.unibo.exceptions.arithmetic.ArithmeticService;
 import it.unibo.exceptions.fakenetwork.api.NetworkComponent;
+import it.unibo.exceptions.fakenetwork.api.NetworkException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -61,6 +62,8 @@ public final class ServiceBehindUnstableNetwork implements NetworkComponent {
             final var message = data + " is not a valid keyword (allowed: " + KEYWORDS + "), nor is a number";
             System.out.println(message);
             commandQueue.clear();
+
+            
             /*
              * This method, in this point, should throw an IllegalStateException.
              * Its cause, however, is the previous NumberFormatException.
@@ -68,6 +71,7 @@ public final class ServiceBehindUnstableNetwork implements NetworkComponent {
              *
              * The previous exceptions must be set as the cause of the new exception
              */
+            throw new IllegalStateException(message, exceptionWhenParsedAsNumber);
         }
     }
 
