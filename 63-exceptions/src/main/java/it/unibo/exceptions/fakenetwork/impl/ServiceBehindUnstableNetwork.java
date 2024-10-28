@@ -71,7 +71,7 @@ public final class ServiceBehindUnstableNetwork implements NetworkComponent {
              *
              * The previous exceptions must be set as the cause of the new exception
              */
-            throw new IllegalStateException(message, exceptionWhenParsedAsNumber);
+            throw new IllegalArgumentException(message, exceptionWhenParsedAsNumber);
         }
     }
 
