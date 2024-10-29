@@ -1,7 +1,7 @@
 package it.unibo.generics.graph;
 
 import it.unibo.generics.graph.api.Graph;
-import it.unibo.generics.graph.impl.GraphImpl;
+import it.unibo.generics.graph.impl.GraphImplDFS;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -23,7 +23,7 @@ public final class UseGraph {
         /*
          * Test your graph implementation(s) by calling testGraph
          */
-        Graph<String> graph = new GraphImpl<>();
+        Graph<String> graph = new GraphImplDFS<>();
         testGraph(graph);
     }
 

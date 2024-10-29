@@ -7,9 +7,9 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
 import it.unibo.generics.graph.api.Graph;
-public class GraphImpl<N> implements Graph<N>{
+public class GraphImplDFS<N> implements Graph<N>{
 
-    public GraphImpl(){
+    public GraphImplDFS(){
     }
     private Set<N> nodes = new HashSet<>();
     private Map<N, LinkedList<N>> edgesMap = new HashMap<>();
