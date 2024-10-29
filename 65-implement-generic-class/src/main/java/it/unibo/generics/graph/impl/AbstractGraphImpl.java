@@ -38,6 +38,12 @@ public abstract class AbstractGraphImpl<N> implements Graph<N>{
         return defensiveCopy;
     }
 
+    public Map<N, LinkedList<N>> getEdges() {
+        Map<N, LinkedList<N>> defensiveCopy = new HashMap<>();
+        defensiveCopy.putAll(this.edgesMap);
+        return defensiveCopy;
+    }
+
     @Override
     public Set<N> linkedNodes(N node) {
         if( this.edgesMap.containsKey(node)) {
