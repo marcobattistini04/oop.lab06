@@ -1,6 +1,7 @@
 package it.unibo.generics.graph;
 
 import it.unibo.generics.graph.api.Graph;
+import it.unibo.generics.graph.impl.GraphImplBFS;
 import it.unibo.generics.graph.impl.GraphImplDFS;
 
 import java.util.Arrays;
@@ -23,8 +24,13 @@ public final class UseGraph {
         /*
          * Test your graph implementation(s) by calling testGraph
          */
-        Graph<String> graph = new GraphImplDFS<>();
-        testGraph(graph);
+        System.out.println("TESTING GRAPH THAT IMPLEMENTS BFS ALGORITHM");
+        Graph<String> graphBFS = new GraphImplBFS<>();
+        testGraph(graphBFS);
+        System.out.println("TESTING GRAPH THAT IMPLEMENTS DFS ALGORITHM");
+        Graph<String> graphDFS = new GraphImplDFS<>();
+        testGraph(graphDFS);
+
     }
 
     private static void testGraph(final Graph<String> graph) {
