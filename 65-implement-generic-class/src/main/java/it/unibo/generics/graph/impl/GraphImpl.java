@@ -5,9 +5,12 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Iterator;
 import it.unibo.generics.graph.api.Graph;
 public class GraphImpl<N> implements Graph<N>{
 
+    public GraphImpl(){
+    }
     private Set<N> nodes = new HashSet<>();
     private Map<N, LinkedList<N>> edgesMap = new HashMap<>();
     @Override
@@ -49,11 +52,39 @@ public class GraphImpl<N> implements Graph<N>{
 
 
 
-    
+    private boolean DFSSourceToTarget(List<N> path, Map<N, Boolean> visited, N node, N dest) {
+        visited.replace(node, false, true);
+        path.add(node);
+
+        if(node.equals(dest)) {
+            return true;
+        }
+
+        Iterator<N> iter = this.edgesMap.get(node).listIterator();
+        while(iter.hasNext()) {
+            N n = iter.next();
+            if(! visited.get(n)) {
+                return DFSSourceToTarget(path, visited,  n, dest);
+            }
+        }
+        return false;
+    }
+
+
     @Override
     public List<N> getPath(N source, N target) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPath'");
+        List<N> path = new LinkedList<>();  
+        Map<N, Boolean> visited= new HashMap<>();
+        Iterator<N> iter = this.nodes.iterator();
+        while(iter.hasNext()) {
+            visited.put(iter.next(), false);
+        }
+        
+        if(DFSSourceToTarget(path, visited, source, target)) {
+            return path;
+        } 
+
+        return null;
     }
     
 }
