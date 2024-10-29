@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Iterator;
 
 /**
  * 
@@ -78,6 +79,11 @@ public final class SocialNetworkUserImpl<U extends User> extends UserImpl implem
         if(user == null) {
             throw new IllegalStateException(" Invalid user");
         }
+        if(! this.userNetwork.containsKey(circle)) {
+            this.userNetwork.put(circle, new LinkedList<U>());
+            this.userNetwork.get(circle).addFirst(user);
+            return true;
+        }
         if (! this.userNetwork.get(circle).contains(user)) {
             this.userNetwork.get(circle).addFirst(user);
             return true;
@@ -105,6 +111,14 @@ public final class SocialNetworkUserImpl<U extends User> extends UserImpl implem
 
     @Override
     public List<U> getFollowedUsers() {
-        return null;
+        List<U> allUsersFollowed = new LinkedList<>();
+        Iterator<String> iter = this.userNetwork.keySet().iterator();
+        while(iter.hasNext()) {
+            String group = iter.next();
+            allUsersFollowed.addAll(this.userNetwork.get(group));
+        }
+
+        return allUsersFollowed;
+
     }
 }
